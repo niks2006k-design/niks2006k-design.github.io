@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kevins Strautiņš — Cold Outreach &amp; Sales Calls</title>
+<meta name="description" content="Kevins Strautiņš books and closes sales conversations for service businesses, commission only. Based in Riga, Latvia. English (C1) &amp; Latvian.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#13182a;
+    --panel:#1b2240;
+    --panel-2:#222a4d;
+    --paper:#f4efe2;
+    --paper-dim:#cfc8b6;
+    --brass:#c9a227;
+    --brass-soft:#e7c75f;
+    --sage:#7fa389;
+    --line: rgba(244,239,226,0.14);
+    --line-strong: rgba(244,239,226,0.28);
+    --max:1080px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Inter',system-ui,sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{ background:var(--brass); color:var(--ink); }
+  a{ color:inherit; }
+
+  .mono{ font-family:'JetBrains Mono',monospace; letter-spacing:0.02em; }
+  .display{ font-family:'Fraunces',serif; }
+
+  .wrap{ max-width:var(--max); margin:0 auto; padding:0 24px; }
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(19,24,42,0.86);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .header-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 24px;
+  }
+  .monogram{
+    width:42px; height:42px; border:1px solid var(--line-strong); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',serif; font-weight:600; font-size:15px; letter-spacing:0.04em;
+    color:var(--brass-soft);
+  }
+  .brand{ display:flex; align-items:center; gap:12px; }
+  .brand-name{ font-size:14px; letter-spacing:0.03em; color:var(--paper-dim); }
+  .brand-name strong{ color:var(--paper); font-weight:500; }
+
+  nav{ display:flex; align-items:center; gap:28px; }
+  nav a{
+    text-decoration:none; font-size:13px; letter-spacing:0.04em; text-transform:uppercase;
+    color:var(--paper-dim); transition:color .2s;
+  }
+  nav a:hover{ color:var(--brass-soft); }
+
+  /* language dial toggle */
+  .dial{
+    --pos: 0%;
+    position:relative;
+    width:84px; height:36px;
+    border:1px solid var(--line-strong);
+    border-radius:999px;
+    background:var(--panel);
+    cursor:pointer;
+    display:flex; align-items:center;
+    padding:3px;
+    flex-shrink:0;
+  }
+  .dial .knob{
+    position:absolute;
+    top:3px; left:3px;
+    width:38px; height:28px;
+    border-radius:999px;
+    background:var(--brass);
+    transform:translateX(var(--pos));
+    transition:transform .25s cubic-bezier(.4,0,.2,1);
+  }
+  .dial .labels{
+    position:relative;
+    display:flex; width:100%;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px; font-weight:600;
+  }
+  .dial .labels span{
+    flex:1; text-align:center; z-index:1;
+    color:var(--paper-dim);
+  }
+  .dial[data-lang="lv"] .knob{ transform:translateX(40px); }
+  .dial[data-lang="lv"] .labels span:last-child{ color:var(--ink); }
+  .dial[data-lang="en"] .labels span:first-child{ color:var(--ink); }
+
+  /* ---------- hero ---------- */
+  .hero{ padding:96px 0 80px; border-bottom:1px solid var(--line); position:relative; overflow:hidden;}
+  .hero::before{
+    content:"";
+    position:absolute; top:-120px; right:-160px;
+    width:420px; height:420px; border-radius:50%;
+    background:radial-gradient(circle, rgba(201,162,39,0.16), transparent 70%);
+    pointer-events:none;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--sage);
+    display:flex; align-items:center; gap:10px; margin-bottom:22px;
+  }
+  .eyebrow::before{ content:""; width:7px; height:7px; border-radius:50%; background:var(--sage); display:inline-block; box-shadow:0 0 0 4px rgba(127,163,137,0.18); }
+  h1{
+    font-family:'Fraunces',serif; font-weight:600;
+    font-size:clamp(34px, 6vw, 60px);
+    line-height:1.06; letter-spacing:-0.01em;
+    margin:0 0 22px;
+    max-width:14ch;
+  }
+  .hero p.lead{
+    font-size:18px; color:var(--paper-dim); max-width:52ch; margin:0 0 36px;
+  }
+  .cta-row{ display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:13px 22px; border-radius:6px;
+    font-size:14px; font-weight:500; text-decoration:none;
+    border:1px solid var(--line-strong);
+    transition:all .2s;
+  }
+  .btn-primary{ background:var(--brass); color:var(--ink); border-color:var(--brass); }
+  .btn-primary:hover{ background:var(--brass-soft); border-color:var(--brass-soft); }
+  .btn-ghost{ color:var(--paper); }
+  .btn-ghost:hover{ border-color:var(--paper); }
+
+  .hero-stats{
+    display:grid; grid-template-columns:repeat(3,1fr);
+    gap:0; margin-top:64px; border-top:1px solid var(--line);
+  }
+  .hero-stats div{ padding:22px 0 0; border-right:1px solid var(--line); }
+  .hero-stats div:last-child{ border-right:none; }
+  .hero-stats .num{ font-family:'JetBrains Mono',monospace; font-size:26px; color:var(--brass-soft); }
+  .hero-stats .lbl{ font-size:12.5px; color:var(--paper-dim); margin-top:4px; }
+
+  /* ---------- section shell ---------- */
+  section{ padding:76px 0; border-bottom:1px solid var(--line); }
+  .section-head{ display:flex; align-items:baseline; gap:16px; margin-bottom:40px; }
+  .section-num{ font-family:'JetBrains Mono',monospace; color:var(--brass); font-size:13px; }
+  h2{ font-family:'Fraunces',serif; font-weight:600; font-size:clamp(24px,3.4vw,32px); margin:0; }
+  .section-sub{ color:var(--paper-dim); font-size:15px; max-width:60ch; margin-top:10px;}
+
+  /* about */
+  .about-grid{ display:grid; grid-template-columns:1.3fr 1fr; gap:56px; }
+  .about-grid p{ color:var(--paper-dim); font-size:16px; max-width:56ch; }
+  .fact-list{ border-top:1px solid var(--line); }
+  .fact-list .row{
+    display:flex; justify-content:space-between; padding:14px 0;
+    border-bottom:1px solid var(--line); font-size:14px;
+  }
+  .fact-list .row span:first-child{ color:var(--paper-dim); }
+  .fact-list .row span:last-child{ font-family:'JetBrains Mono',monospace; color:var(--paper); }
+  .fact-list .row .k{ color:var(--paper-dim); }
+  .fact-list .row .v{ font-family:'JetBrains Mono',monospace; color:var(--paper); }
+
+  /* services */
+  .service-list{ border-top:1px solid var(--line); }
+  .service{
+    display:grid; grid-template-columns:64px 1fr; gap:24px;
+    padding:32px 0; border-bottom:1px solid var(--line);
+  }
+  .service .idx{ font-family:'JetBrains Mono',monospace; color:var(--brass); font-size:14px; padding-top:4px; }
+  .service h3{ font-family:'Fraunces',serif; font-weight:600; font-size:21px; margin:0 0 8px; }
+  .service p{ color:var(--paper-dim); margin:0; max-width:60ch; font-size:15px;}
+
+  /* commission funnel */
+  .funnel{ border-top:1px solid var(--line); }
+  .funnel .row{
+    display:grid; grid-template-columns:50px 1fr auto; gap:20px; align-items:center;
+    padding:18px 0; border-bottom:1px solid var(--line);
+  }
+  .funnel .row .idx{ font-family:'JetBrains Mono',monospace; color:var(--sage); font-size:13px; }
+  .funnel .row .step{ font-size:15px; }
+  .funnel .row .tag{
+    font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--paper-dim);
+    border:1px solid var(--line-strong); padding:4px 10px; border-radius:999px; white-space:nowrap;
+  }
+  .commission-note{
+    margin-top:28px; padding:22px 24px; background:var(--panel);
+    border:1px solid var(--line-strong); border-radius:8px; font-size:14.5px; color:var(--paper-dim);
+  }
+  .commission-note strong{ color:var(--brass-soft); font-weight:600; }
+
+  /* coverage */
+  .chip-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
+  .chip{
+    font-family:'JetBrains Mono',monospace; font-size:12.5px;
+    padding:8px 14px; border:1px solid var(--line-strong); border-radius:999px; color:var(--paper-dim);
+  }
+  .chip.on{ color:var(--ink); background:var(--sage); border-color:var(--sage); }
+
+  /* contact */
+  .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:32px;}
+  .contact-card{
+    border:1px solid var(--line-strong); border-radius:8px; padding:26px;
+    background:var(--panel);
+  }
+  .contact-card .lbl{ font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--sage); text-transform:uppercase; letter-spacing:0.08em; }
+  .contact-card .val{ font-family:'Fraunces',serif; font-size:20px; margin-top:10px; }
+  .contact-card a{ text-decoration:none; }
+  .contact-card a:hover{ color:var(--brass-soft); }
+
+  /* footer */
+  footer{ padding:48px 0 60px; }
+  .footer-grid{ display:grid; grid-template-columns:1.1fr 1fr; gap:48px; }
+  .footer-block .lbl{ font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--sage); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px;}
+  .footer-block .row{ display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid var(--line); font-size:13.5px; }
+  .footer-block .row span:first-child{ color:var(--paper-dim); }
+  .footer-block .row span:last-child{ font-family:'JetBrains Mono',monospace; text-align:right; }
+  .fineprint{ margin-top:36px; font-size:12px; color:var(--paper-dim); opacity:0.7; max-width:60ch;}
+
+  [data-lang-en],[data-lang-lv]{ display:none; }
+  html[data-active="en"] [data-lang-en]{ display:block; }
+  html[data-active="en"] span[data-lang-en],
+  html[data-active="en"] strong[data-lang-en]{ display:inline; }
+  html[data-active="lv"] [data-lang-lv]{ display:block; }
+  html[data-active="lv"] span[data-lang-lv],
+  html[data-active="lv"] strong[data-lang-lv]{ display:inline; }
+
+  @media (max-width:780px){
+    .about-grid, .footer-grid, .contact-grid{ grid-template-columns:1fr; }
+    .hero-stats{ grid-template-columns:1fr 1fr; }
+    .hero-stats div:nth-child(2){ border-right:none; }
+    nav{ gap:16px; }
+    nav a{ display:none; }
+    .service{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner wrap" style="padding-left:0;padding-right:0;">
+    <div class="brand">
+      <div class="monogram">KS</div>
+      <div class="brand-name">
+        <strong>Kevins Strautiņš</strong><br>
+        <span data-lang-en>Cold outreach &amp; sales calls</span>
+        <span data-lang-lv>Aukstā zvanīšana un pārdošana</span>
+      </div>
+    </div>
+    <nav>
+      <a href="#about" data-lang-en>About</a>
+      <a href="#about" data-lang-lv>Par mani</a>
+      <a href="#services" data-lang-en>Services</a>
+      <a href="#services" data-lang-lv>Pakalpojumi</a>
+      <a href="#commission" data-lang-en>Commission</a>
+      <a href="#commission" data-lang-lv>Komisija</a>
+      <a href="#contact" data-lang-en>Contact</a>
+      <a href="#contact" data-lang-lv>Kontakti</a>
+      <div class="dial" id="langDial" data-lang="en" role="button" aria-label="Switch language / Mainīt valodu" tabindex="0">
+        <div class="knob"></div>
+        <div class="labels"><span>EN</span><span>LV</span></div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">
+      <span data-lang-en>Available for new clients — commission only</span>
+      <span data-lang-lv>Pieejams jauniem klientiem — tikai par rezultātu</span>
+    </div>
+    <h1 data-lang-en>I open doors. You close revenue.</h1>
+    <h1 data-lang-lv>Es atveru durvis. Jūs noslēdzat darījumu.</h1>
+    <p class="lead" data-lang-en>I run cold outreach and sales calls for service businesses, on commission. You don't pay until a deal closes.</p>
+    <p class="lead" data-lang-lv>Veicu aukstos zvanus un pārdošanas sarunas pakalpojumu uzņēmumiem par komisiju. Jūs maksājat tikai tad, kad darījums ir noslēgts.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="mailto:Kevins.strautins@gmail.com" data-lang-en>Email me</a>
+      <a class="btn btn-primary" href="mailto:Kevins.strautins@gmail.com" data-lang-lv>Rakstīt e-pastu</a>
+      <a class="btn btn-ghost" href="tel:+37129600599" data-lang-en>Call +371 29600599</a>
+      <a class="btn btn-ghost" href="tel:+37129600599" data-lang-lv>Zvanīt +371 29600599</a>
+    </div>
+
+    <div class="hero-stats">
+      <div>
+        <div class="num mono">2</div>
+        <div class="lbl" data-lang-en>Languages — Latvian &amp; English (C1)</div>
+        <div class="lbl" data-lang-lv>Valodas — latviešu un angļu (C1)</div>
+      </div>
+      <div>
+        <div class="num mono">LV</div>
+        <div class="lbl" data-lang-en>Based in Riga, working with clients remotely</div>
+        <div class="lbl" data-lang-lv>Bāzēts Rīgā, strādā ar klientiem attālināti</div>
+      </div>
+      <div>
+        <div class="num mono">%</div>
+        <div class="lbl" data-lang-en>Commission only — paid on closed deals</div>
+        <div class="lbl" data-lang-lv>Tikai komisija — par noslēgtiem darījumiem</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2 data-lang-en>About</h2>
+      <h2 data-lang-lv>Par mani</h2>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p data-lang-en>I'm Kevins — a hardworking cold-caller and closer for service businesses. I handle the part most owners avoid: picking up the phone, finding the right people, and turning a cold list into booked, qualified conversations. Where it makes sense, I close the deal myself too.</p>
+        <p data-lang-en>I work in both Latvian and English (C1), so I can run campaigns for local Latvian businesses or for English-speaking clients anywhere.</p>
+        <p data-lang-lv>Esmu Kevins — čakls cilvēks, kas veic aukstos zvanus un pārdošanas sarunas pakalpojumu uzņēmumiem. Es uzņemos to daļu, no kuras lielākā daļa īpašnieku izvairās: zvanīšanu, īsto cilvēku atrašanu un auksta saraksta pārvēršanu rezervētās, kvalificētās sarunās. Kur tas ir lietderīgi, es noslēdzu darījumu arī pats.</p>
+        <p data-lang-lv>Strādāju gan latviešu, gan angļu valodā (C1 līmenis), tāpēc varu vadīt kampaņas vietējiem Latvijas uzņēmumiem vai angliski runājošiem klientiem jebkur.</p>
+      </div>
+      <div class="fact-list">
+        <div class="row"><span data-lang-en>Name</span><span data-lang-lv>Vārds</span><span>Kevins Strautiņš</span></div>
+        <div class="row"><span data-lang-en>Based in</span><span data-lang-lv>Atrodas</span><span>Riga, Latvia</span></div>
+        <div class="row"><span data-lang-en>Languages</span><span data-lang-lv>Valodas</span><span>LV · EN (C1)</span></div>
+        <div class="row">
+          <span class="k"><span data-lang-en>Working style</span><span data-lang-lv>Darba stils</span></span>
+          <span class="v"><span data-lang-en>Hardworking, direct</span><span data-lang-lv>Čakls, tiešs</span></span>
+        </div>
+        <div class="row">
+          <span class="k"><span data-lang-en>Engagement</span><span data-lang-lv>Sadarbība</span></span>
+          <span class="v"><span data-lang-en>Commission only</span><span data-lang-lv>Tikai komisija</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2 data-lang-en>Services</h2>
+      <h2 data-lang-lv>Pakalpojumi</h2>
+    </div>
+    <div class="service-list">
+      <div class="service">
+        <div class="idx">01</div>
+        <div>
+          <h3 data-lang-en>Cold outreach</h3>
+          <h3 data-lang-lv>Aukstā zvanīšana</h3>
+          <p data-lang-en>I build and work a call list for your business — finding prospects, dialing, qualifying interest, and booking intro calls or demos directly into your calendar.</p>
+          <p data-lang-lv>Veidoju un strādāju ar zvanu sarakstu jūsu uzņēmumam — atrodu potenciālos klientus, zvanu, novērtēju interesi un rezervēju iepazīšanās sarunas vai demonstrācijas tieši jūsu kalendārā.</p>
+        </div>
+      </div>
+      <div class="service">
+        <div class="idx">02</div>
+        <div>
+          <h3 data-lang-en>Sales calls (closing)</h3>
+          <h3 data-lang-lv>Pārdošanas sarunas (darījumu slēgšana)</h3>
+          <p data-lang-en>For businesses that already have leads or warm interest, I run the sales conversation itself — handling objections and closing — so you only step in once it's time to deliver.</p>
+          <p data-lang-lv>Uzņēmumiem, kuriem jau ir potenciālie klienti vai siltas intereses, es vadu pašu pārdošanas sarunu — risinu iebildumus un slēdzu darījumu —, lai jūs iesaistāties tikai tad, kad jāsāk pakalpojuma sniegšana.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="commission">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2 data-lang-en>How commission works</h2>
+      <h2 data-lang-lv>Kā strādā komisija</h2>
+    </div>
+    <p class="section-sub" data-lang-en>No retainer, no upfront cost. I'm paid a percentage of the value of each deal I help close — agreed with you before any work starts.</p>
+    <p class="section-sub" data-lang-lv>Bez fiksētas maksas, bez priekšapmaksas. Man maksā procentu no katra noslēgtā darījuma vērtības — par to vienojamies pirms darba sākuma.</p>
+
+    <div class="funnel">
+      <div class="row">
+        <div class="idx">01</div>
+        <div class="step" data-lang-en>Dial &amp; qualify prospects from your target market</div>
+        <div class="step" data-lang-lv>Zvanu un kvalificēju potenciālos klientus jūsu mērķa tirgū</div>
+        <div class="tag" data-lang-en>no cost</div>
+        <div class="tag" data-lang-lv>bez maksas</div>
+      </div>
+      <div class="row">
+        <div class="idx">02</div>
+        <div class="step" data-lang-en>Book a qualified intro call or demo</div>
+        <div class="step" data-lang-lv>Sarunāju kvalificētu iepazīšanās sarunu vai demonstrāciju</div>
+        <div class="tag" data-lang-en>no cost</div>
+        <div class="tag" data-lang-lv>bez maksas</div>
+      </div>
+      <div class="row">
+        <div class="idx">03</div>
+        <div class="step" data-lang-en>Close the deal — by me or by you, as agreed</div>
+        <div class="step" data-lang-lv>Darījuma slēgšana — es vai jūs, kā vienosimies</div>
+        <div class="tag" data-lang-en>no cost</div>
+        <div class="tag" data-lang-lv>bez maksas</div>
+      </div>
+      <div class="row">
+        <div class="idx">04</div>
+        <div class="step" data-lang-en>Commission paid on the closed deal's value</div>
+        <div class="step" data-lang-lv>Komisija tiek samaksāta no noslēgtā darījuma vērtības</div>
+        <div class="tag" data-lang-en>% of deal</div>
+        <div class="tag" data-lang-lv>% no darījuma</div>
+      </div>
+    </div>
+
+    <div class="commission-note">
+      <p data-lang-en style="margin:0;"><strong>Rate:</strong> a percentage of closed deal value, set per project depending on deal size, sales cycle, and scope. Get in touch for a specific quote.</p>
+      <p data-lang-lv style="margin:0;"><strong>Likme:</strong> procents no noslēgtā darījuma vērtības, noteikts katram projektam atsevišķi atkarībā no darījuma apjoma, pārdošanas cikla un apjoma. Sazinieties, lai uzzinātu konkrētu piedāvājumu.</p>
+    </div>
+  </div>
+</section>
+
+<section id="coverage">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2 data-lang-en>Coverage</h2>
+      <h2 data-lang-lv>Darbības teritorija</h2>
+    </div>
+    <p class="section-sub" data-lang-en>Based in Latvia, calling for clients across Latvia and English-speaking markets. Remote work — no relocation needed.</p>
+    <p class="section-sub" data-lang-lv>Bāzēts Latvijā, veicu zvanus klientiem Latvijā un angliski runājošos tirgos. Darbs attālināti — bez nepieciešamības pārvietoties.</p>
+    <div class="chip-row">
+      <span class="chip on">Latvia</span>
+      <span class="chip">English-speaking markets (remote)</span>
+      <span class="chip" data-lang-en>Latvian — native</span>
+      <span class="chip" data-lang-lv>Latviešu — dzimtā</span>
+      <span class="chip" data-lang-en>English — C1</span>
+      <span class="chip" data-lang-lv>Angļu — C1</span>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="border-bottom:none;">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">05</span>
+      <h2 data-lang-en>Get in touch</h2>
+      <h2 data-lang-lv>Sazinies</h2>
+    </div>
+    <p class="section-sub" data-lang-en>Tell me about your business and what you'd like to sell more of — email or call works.</p>
+    <p class="section-sub" data-lang-lv>Pastāstiet par savu uzņēmumu un ko vēlaties pārdot vairāk — rakstiet vai zvaniet.</p>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="lbl" data-lang-en>Email</div>
+        <div class="lbl" data-lang-lv>E-pasts</div>
+        <div class="val"><a href="mailto:Kevins.strautins@gmail.com">Kevins.strautins@gmail.com</a></div>
+      </div>
+      <div class="contact-card">
+        <div class="lbl" data-lang-en>Phone</div>
+        <div class="lbl" data-lang-lv>Tālrunis</div>
+        <div class="val"><a href="tel:+37129600599">+371 29600599</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-block">
+        <div class="lbl" data-lang-en>Personal details</div>
+        <div class="lbl" data-lang-lv>Personas dati</div>
+        <div class="row"><span data-lang-en>Name</span><span data-lang-lv>Vārds</span><span>Kevins Strautiņš</span></div>
+        <div class="row"><span data-lang-en>Address</span><span data-lang-lv>Adrese</span><span>Miera iela 86, Rīga, Latvia</span></div>
+        <div class="row"><span data-lang-en>Email</span><span data-lang-lv>E-pasts</span><span>Kevins.strautins@gmail.com</span></div>
+        <div class="row"><span data-lang-en>Phone</span><span data-lang-lv>Tālrunis</span><span>+371 29600599</span></div>
+      </div>
+      <div class="footer-block">
+        <div class="lbl" data-lang-en>Invoicing &amp; payment details</div>
+        <div class="lbl" data-lang-lv>Rēķinu un maksājumu dati</div>
+        <div class="row"><span data-lang-en>Bank</span><span data-lang-lv>Banka</span><span>Swedbank</span></div>
+        <div class="row"><span>IBAN</span><span>LV55HABA0551053059094</span></div>
+        <div class="row"><span>SWIFT / BIC</span><span>HABALV22XXX</span></div>
+      </div>
+    </div>
+    <p class="fineprint" data-lang-en>© <span id="yearEn"></span> Kevins Strautiņš. Commission rates are agreed per project before any work begins.</p>
+    <p class="fineprint" data-lang-lv>© <span id="yearLv"></span> Kevins Strautiņš. Komisijas likmes tiek saskaņotas katram projektam pirms darba sākuma.</p>
+  </div>
+</footer>
+
+<script>
+  const dial = document.getElementById('langDial');
+  const html = document.documentElement;
+
+  function setLang(lang){
+    html.setAttribute('data-active', lang);
+    dial.setAttribute('data-lang', lang);
+    localStorage.setItem('site-lang', lang);
+    document.title = lang === 'lv'
+      ? 'Kevins Strautiņš — Aukstā zvanīšana un pārdošana'
+      : 'Kevins Strautiņš — Cold Outreach & Sales Calls';
+  }
+
+  dial.addEventListener('click', () => {
+    const current = dial.getAttribute('data-lang');
+    setLang(current === 'en' ? 'lv' : 'en');
+  });
+  dial.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); dial.click(); }
+  });
+
+  const saved = localStorage.getItem('site-lang');
+  const browserLang = navigator.language && navigator.language.toLowerCase().startsWith('lv') ? 'lv' : 'en';
+  setLang(saved || browserLang);
+
+  const y = new Date().getFullYear();
+  document.getElementById('yearEn').textContent = y;
+  document.getElementById('yearLv').textContent = y;
+</script>
+
+</body>
+</html>
